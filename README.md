@@ -33,16 +33,14 @@ Note: SEA-AD cells appear in several Census datasets (whole-taxonomy atlas plus 
 | Other donor, same protocol | 506 | 0.89 |
 | Other donor, other protocol | 506 | 0.87 |
 
+![Output plot showing cross-protocol donor similarity](output.png)
+
+
 - **Donor identity survives the protocol change:** every same-donor pair (minimum r = 0.90) is more similar than the median pair of different donors measured with the same protocol.
 - **A consistent protocol effect exists:** different donors are less similar across protocols (0.87) than within one protocol (0.89).
 
 Cross-protocol replicates are therefore valid positive pairs, and there is a technical effect to remove.
 
-## Limitations
-
-- Pseudobulks average away cell-level noise; the protocol effect on individual cells is likely larger.
-- Only one cell type (astrocytes) and one region (MTG); SEA-AD is a single lab, so only the protocol varies, not the lab.
-- Thresholds (100 nuclei max, 50 nuclei min per group) are heuristic and not yet tested for sensitivity.
 
 ## How to run
 
@@ -53,7 +51,6 @@ jupyter notebook seaad_replicate_poc.ipynb
 
 - Requires internet access. The metadata query takes a few minutes; the dataset download (~1.1 GB) is done once and saved locally as `seaad_astro.h5ad`.
 - The filtered, subsampled data are saved as `seaad_astro_matched.h5ad`, so later runs can start from the pseudobulk step.
-- Tip: Census metadata columns are pandas categoricals; use `groupby(..., observed=True)` to hide empty categories.
 
 ## References
 
